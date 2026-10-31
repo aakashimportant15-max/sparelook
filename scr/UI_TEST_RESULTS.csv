@@ -1,0 +1,51 @@
+test_id,scenario,viewport,status,screenshot_path,notes
+UI-AUTH-01,Sign-in page initial state,D,PASS,screenshots/211-UI-AUTH-01-signin-initial-d.png,"Heading, labelled email/password, demo-account list; no password value rendered."
+UI-AUTH-01M,Sign-in page at mobile 360x800,M,PASS,screenshots/212-UI-AUTH-01M-signin-mobile-m360.png,No horizontal overflow at 360px.
+UI-AUTH-02,Empty sign-in submit shows validation,D,PASS,screenshots/213-UI-AUTH-02-empty-submit-d.png,Form-level alert is shown and focused; no per-field messages exist (observed gap).
+UI-AUTH-03,Invalid credentials generic error,D,PASS,screenshots/214-UI-AUTH-03-invalid-credentials-d.png,"Generic message, email preserved, no hint whether the account exists."
+UI-AUTH-04A,Borrower sign-in and role navigation,D,PASS,screenshots/215-UI-AUTH-04A-borrower-landing-d.png,"Session storage saved; nav = Catalogue, My bookings, Incidents."
+UI-AUTH-04B,Owner sign-in and role navigation,D,PASS,screenshots/216-UI-AUTH-04B-owner-landing-d.png,Owner sees Requests but not admin-only links.
+UI-AUTH-04C,Admin sign-in and role navigation,D,PASS,screenshots/217-UI-AUTH-04C-admin-landing-d.png,"Admin navigation includes Resources, Members and Audit."
+UI-AUTH-05,Sign-out returns to public sign-in,D,PASS,screenshots/218-UI-AUTH-05-signed-out-d.png,"Redirect to /sign-in?signedOut=1, banner shown, navigation removed."
+UI-AUTH-06,Protected routes redirect to sign-in with return path,D,PASS,screenshots/219-UI-AUTH-06-protected-redirect-d.png,Both /bookings and /admin/users redirect with a next= return path.
+UI-AUTH-07,Back navigation does not restore session,D,PASS,screenshots/220-UI-AUTH-07-back-after-signout-d.png,Back button lands on sign-in; no protected content is re-rendered.
+UI-AUTH-08,Rate limit after repeated failures,D,PASS,screenshots/221-UI-AUTH-08-rate-limited-d.png,Throwaway email only; 10 failures then HTTP 429 on the 11th attempt.
+UI-BOR-01,Borrower catalogue initial state,D,PASS,screenshots/222-UI-BOR-01-catalogue-d.png,"9 visible resources (archived item hidden), maintenance item visible, filters present."
+UI-BOR-01M,Borrower catalogue at mobile 360x800,M,PASS,screenshots/223-UI-BOR-01M-catalogue-mobile-m360.png,No horizontal overflow at 360px.
+UI-BOR-02,Catalogue search match and no-match empty state,D,PASS,screenshots/225-UI-BOR-02-search-empty-d.png,Match view captured as screenshots/224-UI-BOR-02-search-match-d.png; the no-match state offers a recovery link.
+UI-BOR-03,Catalogue filters and pagination boundary,D,PASS,screenshots/226-UI-BOR-03-eligible-filter-d.png,"Eligible-only view returned 5 of 9; single page, so pagination interactions are NOT RUN (no second page)."
+UI-BOR-04,Resource detail content and request control,D,PASS,screenshots/227-UI-BOR-04-resource-detail-d.png,"Description, accessories, eligibility success, availability, passport link and form."
+UI-BOR-05,Ineligible borrower is blocked with reasons,D,PASS,screenshots/228-UI-BOR-05-ineligible-d.png,Dev has no group/training tags; plain-language reasons shown and submit disabled.
+UI-BOR-06,Maintenance bookable state and archived resource hidden,D,PASS,screenshots/230-UI-BOR-06-archived-404-d.png,"Maintenance detail captured first (screenshots/229-UI-BOR-06-maintenance-detail-d.png); the archived resource renders the not-found page while the HTTP status stayed 200 (soft 404, finding F1)."
+UI-BOR-07,Booking form validation then auto-approval,D,PASS,screenshots/232-UI-BOR-07-booking-approved-d.png,Two field errors asserted; valid request auto-approved; booking id saved.
+UI-BOR-08,Overlapping request is rejected with conflict window,D,PASS,screenshots/233-UI-BOR-08-conflict-d.png,409 conflict surfaced with the conflicting window and waitlist guidance.
+UI-BOR-09,Join waitlist for a conflicting slot,D,PASS,screenshots/234-UI-BOR-09-waitlisted-d.png,Waitlist booking created and its detail shows the WAITLISTED explanation.
+UI-BOR-10,Double submit does not create two bookings,D,PASS,screenshots/235-UI-BOR-10-single-booking-d.png,Two synchronous clicks on submit; only one booking row exists for the purpose.
+UI-OWN-01,Owner request queue with rank and usage,D,PASS,screenshots/236-UI-OWN-01-queue-d.png,"Two competing pending requests, ranks, 30-day usage and eligibility shown."
+UI-OWN-02,Owner rejects a pending request with a reason,D,PASS,screenshots/237-UI-OWN-02-rejected-detail-d.png,Request disappeared from the queue; detail shows REJECTED plus the reason.
+UI-OWN-03,Second competing borrower requests the same slot,D,PASS,screenshots/238-UI-OWN-03-isha-pending-d.png,"Isha (7.0 h usage) joins the same slot as Sana (30.0 h), so rank 2 needs an override."
+UI-OWN-04,Approving rank 2 requires a written override,D,PASS,screenshots/240-UI-OWN-04-queue-cleared-d.png,Override error + required reason asserted; Sana approved; competing Isha auto-waitlisted.
+UI-OWN-05,Competing request is auto-waitlisted after approval,D,PASS,screenshots/241-UI-OWN-05-superseded-waitlist-d.png,Isha's request moved to WAITLISTED with the supersede explanation.
+UI-OWN-06,Cancelling an approved booking promotes the waitlist,D,PASS,screenshots/243-UI-OWN-06-rohan-promoted-d.png,Ananya cancels; Rohan's waitlisted request is promoted to APPROVED automatically.
+UI-OWN-07,Owner records checkout and return; discrepancy opens incident,D,PASS,screenshots/244-UI-OWN-07-returned-detail-d.png,"Handover, MINOR_WEAR return, missing-plate evidence and the automatic MISSING_ITEM incident all asserted. Observed gap: the in-form success banners are unmounted by the refresh that follows submission, so the persistent status/evidence is the verification source."
+UI-OWN-08,Checkout before the 30-minute window shows a server error,D,PASS,screenshots/245-UI-OWN-08-checkout-early-d.png,Tomorrow's booking cannot be checked out yet; no data written.
+UI-INC-01,Borrower reports a manual incident from a booking,D,PASS,screenshots/246-UI-INC-01-manual-incident-d.png,Incident reuses the existing booking id and opens the new incident record.
+UI-INC-02,Owner investigates and resolves the automatic incident,D,PASS,screenshots/247-UI-INC-02-resolved-d.png,OPEN → INVESTIGATING → RESOLVED with a resolution note.
+UI-INC-03,Borrower sees incident read-only state,D,PASS,screenshots/248-UI-INC-03-incident-readonly-d.png,Borrower sees the explanation and no status controls.
+UI-INC-04,Borrower incident list shows involved incidents,D,PASS,screenshots/249-UI-INC-04-incident-list-d.png,Both the automatic and the manual incident are visible to the involved borrower.
+UI-PAS-01,Owner passport shows full timeline,D,PASS,screenshots/250-UI-PAS-01-passport-owner-d.png,Full audit/condition timeline; no restricted summary banner.
+UI-PAS-02,Borrower passport is limited to own history,D,PASS,screenshots/251-UI-PAS-02-passport-borrower-d.png,"Summary banner shown; only Isha's own booking events, no condition/audit detail."
+UI-ADM-01,Admin sees every resource including hidden ones,D,PASS,screenshots/252-UI-ADM-01-resource-admin-list-d.png,Archived and maintenance resources visible to admin only.
+UI-ADM-02,Admin creates a resource after duplicate tag rejection,D,PASS,screenshots/254-UI-ADM-02-created-resource-d.png,Duplicate tag rejected with a field error; valid tag creates the resource.
+UI-ADM-03,Admin moves the new resource to maintenance,D,PASS,screenshots/255-UI-ADM-03-maintenance-status-d.png,Status change succeeds and the resource page blocks booking.
+UI-ADM-04,Admin grants tags; borrower eligibility updates,D,PASS,screenshots/258-UI-ADM-04-tags-restored-d.png,Tags grant access live; tags restored to the seeded empty state afterwards.
+UI-ADM-05,Suspend revokes the member session; reactivation restores access,D,PASS,screenshots/259-UI-ADM-05-member-status-d.png,"Suspension invalidated the live session; reactivation restored the account. Observed gap: the success message renders only inside the collapsed 'Manage access' form, so the badge/button change is the visible confirmation."
+UI-ADM-06,Audit trail filter by action,D,PASS,screenshots/260-UI-ADM-06-audit-filter-d.png,Filter returns only booking.approved events.
+UI-ADM-07,Owner cannot open admin member management,D,PASS,screenshots/261-UI-ADM-07-forbidden-owner-d.png,Server-side role guard redirects to /forbidden.
+UI-ADM-08,Borrower cannot open the owner request queue,D,PASS,screenshots/262-UI-ADM-08-forbidden-borrower-d.png,Borrower is redirected to the 403 page.
+UI-RES-01,Borrower pages at 360x800,M,PASS,screenshots/263-UI-RES-01-bookings-mobile-m360.png,"No horizontal overflow on bookings, resource detail, incidents or booking detail."
+UI-RES-02,Owner and admin pages at 360x800,M,PASS,screenshots/264-UI-RES-02-queue-mobile-m360.png,"Queue, passport, booking detail and admin lists fit at 360px."
+UI-RES-03,"Catalogue, queue, detail and passport at 768x1024",T,PASS,screenshots/265-UI-RES-03-queue-tablet-t.png,No horizontal overflow at 768px on the layout-sensitive screens.
+UI-A11Y-01,"Semantic landmarks, headings and control labels",D,PASS,screenshots/266-UI-A11Y-01-semantics-d.png,"Checked 5 signed-in pages: one h1, labelled controls, main nav label, skip link. Issues: 0."
+UI-A11Y-02,Skip link keyboard behaviour,D,PASS,screenshots/267-UI-A11Y-02-skip-link-focus-d.png,First Tab focuses the skip link; activating it puts the next Tab inside main.
+UI-A11Y-03,Sign in using only the keyboard,D,PASS,screenshots/268-UI-A11Y-03-keyboard-signin-d.png,"Reached fields with Tab, typed credentials, submitted with Enter; no mouse used."

@@ -1,0 +1,16 @@
+PASS landing page - status=200
+PASS sign-in page - status=200
+PASS unauthenticated /api/me - status=401
+PASS wrong password rejected - status=401 code=UNAUTHENTICATED message="Email or password is incorrect."
+PASS demo sign-in - status=200 cookie=session
+PASS authenticated /api/me - status=200 role=BORROWER
+PASS catalogue page - status=200
+PASS resource list - status=200 total=9
+PASS eligibility filter - status=200 eligible=5
+PASS my bookings - status=200 upcoming=1 active=0 past=0
+PASS booking detail - status=200 id=b-pending-ananya-r02
+PASS other requester booking hidden - status=404
+PASS owner endpoint blocked for borrower - status=403
+PASS sign-out invalidates session - signOut=200 me=401
+
+14/14 smoke checks passed.

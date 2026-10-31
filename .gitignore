@@ -1,0 +1,54 @@
+node_modules/
+.next/
+out/
+build/
+data/*.db
+data/*.db-wal
+data/*.db-shm
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+next-env.d.ts
+playwright-report/
+test-results/
+coverage/
+.DS_Store
+# Local QA artifacts and sensitive test data
+*.db
+*.db-wal
+*.db-shm
+cookies.txt
+playwright-report/
+test-results/
+coverage/
+# Local QA logs and run outputs
+*.log
+results.jsonl
+
+# GitHub cleanup: generated/review artifacts
+scr/_harness/node_modules/
+scr/screenshots/
+scr/sparelook_finalqa_20261031_1605/
+scr/sparelook_redesign_20261031_135718/
+scr/sparelook_remediation_20261031_0015/
+review-share/
+SpareLook_Review_Files/
+
+# Local environment and build artifacts
+.env*
+!.env.example
+
+# Local QA harness artifacts
+scr/_harness/
+
+scr/_harness/
+
+# Local planning and generated files
+/ShareSpace_Claude_Master_Prompt.txt
+/ShareSpace_Folder_Structure.txt
+/directory_structure.txt
+/background.png
+/dashboard.png
+/docs/SpareLook_Combined_Master_Prompt.txt
+/docs/sparelook-final-prompt.md
